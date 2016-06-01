@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux'
 import bpStatus from './bpStatus'
+import discoveryConnectState from './discoveryConnect'
 
 const rootReducer = combineReducers({
-  bpStatus
+  discoveryConnectState
 })
 
 export default rootReducer

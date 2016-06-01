@@ -3,7 +3,7 @@ import {START_DISCOVERY, DISCOVERY_FAILURE, START_CONNECT, CONNECT_SUCCESS,
               CONNECT_FAILURE, DISCONNECT} from '../constants'
 
 const initialState = {
-  text: '连接血压计',
+  text: '点击搜索血压计',
   status: 'disconnect'
 }
 

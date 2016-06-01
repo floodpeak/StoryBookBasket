@@ -7,7 +7,7 @@ describe('discoveryConnect reducer', () => {
     expect(
       discoveryConnectStates(undefined, {})
     ).toEqual({
-      text: '连接血压计',
+      text: '点击搜索血压计',
       status: 'disconnect'
     })
   })
@@ -16,23 +16,23 @@ describe('discoveryConnect reducer', () => {
     expect(
       discoveryConnectStates({}, {
         type: types.START_DISCOVERY,
-        text: '搜索血压仪'
+        text: '正在搜索血压计'
       })
     ).toEqual({
-      text: '搜索血压仪',
+      text: '正在搜索血压计',
       status: 'searching'
     })
 
     expect(
       discoveryConnectStates({
-        text: '连接血压计',
+        text: '点击搜索血压计',
         status: 'disconnect'
       }, {
         type: types.START_DISCOVERY,
-        text: '搜索血压仪'
+        text: '正在搜索血压计'
       })
     ).toEqual({
-      text: '搜索血压仪',
+      text: '正在搜索血压计',
       status: 'searching'
     })
 
@@ -42,10 +42,10 @@ describe('discoveryConnect reducer', () => {
         status: 'ready',
       }, {
         type: types.START_DISCOVERY,
-        text: '搜索血压仪'
+        text: '正在搜索血压计'
       })
     ).toEqual({
-      text: '搜索血压仪',
+      text: '正在搜索血压计',
       status: 'searching'
     })
   })
@@ -64,7 +64,7 @@ describe('discoveryConnect reducer', () => {
 
     expect(
       discoveryConnectStates({
-        text: '连接血压计',
+        text: '点击搜索血压计',
         status: 'disconnect'
       }, {
         type: types.DISCOVERY_FAILURE,
@@ -82,25 +82,25 @@ describe('discoveryConnect reducer', () => {
       discoveryConnectStates({}, {
         type: types.START_CONNECT,
         macId: '8966',
-        text: '连接血压计'
+        text: '正在连接血压计'
       })
     ).toEqual({
-      text: '连接血压计',
+      text: '正在连接血压计',
       status: 'connecting',
       macId: '8966'
     })
 
     expect(
       discoveryConnectStates({
-        text: '搜索血压仪',
+        text: '正在搜索血压计',
         status: 'searching'
       }, {
         type: types.START_CONNECT,
         macId: '8966',
-        text: '连接血压计'
+        text: '正在连接血压计'
       })
     ).toEqual({
-      text: '连接血压计',
+      text: '正在连接血压计',
       status: 'connecting',
       macId: '8966'
     })
@@ -111,10 +111,10 @@ describe('discoveryConnect reducer', () => {
       }, {
         type: types.START_CONNECT,
         macId: '8966',
-        text: '连接血压计'
+        text: '正在连接血压计'
       })
     ).toEqual({
-      text: '连接血压计',
+      text: '正在连接血压计',
       status: 'connecting',
       macId: '8966'
     })
@@ -126,7 +126,7 @@ describe('discoveryConnect reducer', () => {
 
     expect(
       discoveryConnectStates({
-        text: '连接血压计',
+        text: '正在连接血压计',
         status: 'connecting',
         macId: '8966'
       }, {
@@ -145,16 +145,16 @@ describe('discoveryConnect reducer', () => {
 
     expect(
       discoveryConnectStates({
-        text: '连接血压计',
+        text: '正在连接血压计',
         status: 'connecting',
         macId: '8966'
       }, {
         type: types.CONNECT_FAILURE,
-        text: '连接血压计失败',
+        text: '血压计连接失败，请重试',
         macId: '8966'
       })
     ).toEqual({
-      text: '连接血压计失败',
+      text: '血压计连接失败，请重试',
       status: 'connect_failure',
       macId: '8966'
     })
@@ -169,11 +169,11 @@ describe('discoveryConnect reducer', () => {
         macId: '8966'
       }, {
         type: types.DISCONNECT,
-        text: '搜索血压计',
+        text: '点击搜索血压计',
         macId: '8966'
       })
     ).toEqual({
-      text: '搜索血压计',
+      text: '点击搜索血压计',
       status: 'disconnect',
       macId: '8966'
     })
