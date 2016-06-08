@@ -41,17 +41,21 @@ const rightIconMenu = (
 );
 
 class BPItem extends React.Component {
-  componentWillMount() {
-    // ["HP","LP","pule"].map((propName) => {
-    //   alert(this.props.propName)
-    // });
-    this.setState({
-      hpColor: 'red'
-    })
-  }
-
   getChildContext() {
     return {muiTheme: getMuiTheme(baseTheme)};
+  }
+
+  getBPColors(PressureType) {
+    let MinP = BP_LIMITATION[PressureType][0];
+    let MaxP = BP_LIMITATION[PressureType][1];
+    switch (true) {
+      case this.props[PressureType] < MinP:
+        return 'gray';
+      case this.props[PressureType] > MaxP:
+        return 'red';
+      default:
+        return 'green';
+    }
   }
 
   render () {
@@ -61,7 +65,7 @@ class BPItem extends React.Component {
       rightIconButton={rightIconMenu}
       primaryText={
         <div>
-          <span style={{color: this.state.hpColor}}>{this.props.HP}</span>/<span>{this.props.LP}毫米汞柱</span>,
+          <span style={{color: this.getBPColors('HP')}}>{this.props.HP}</span>/<span style={{color: this.getBPColors('LP')}}>{this.props.LP}</span>毫米汞柱,
           <span> {this.props.pulse}脉搏</span>
         </div>
       }
@@ -75,6 +79,13 @@ class BPItem extends React.Component {
     );
   }
 }
+
+BPItem.propTypes = {
+  Date: React.PropTypes.object,
+  HP: React.PropTypes.number,
+  LP: React.PropTypes.number,
+  pulse: React.PropTypes.number
+};
 
 BPItem.childContextTypes = {
   muiTheme: React.PropTypes.object.isRequired,
